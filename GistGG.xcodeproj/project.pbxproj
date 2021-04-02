@@ -3,10 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		589152B1261507AA003A3EAC /* Gist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589152B0261507AA003A3EAC /* Gist.swift */; };
+		589152B726150918003A3EAC /* GistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589152B626150918003A3EAC /* GistManager.swift */; };
+		589152BA2615098E003A3EAC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589152B92615098E003A3EAC /* Constants.swift */; };
+		589153142616584F003A3EAC /* GistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589153132616584F003A3EAC /* GistViewController.swift */; };
+		589153182616BEBD003A3EAC /* GistBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589153172616BEBD003A3EAC /* GistBuilder.swift */; };
 		5891CD802614BC3A00CF1076 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891CD7F2614BC3A00CF1076 /* AppDelegate.swift */; };
 		5891CD822614BC3A00CF1076 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891CD812614BC3A00CF1076 /* SceneDelegate.swift */; };
 		5891CD842614BC3A00CF1076 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891CD832614BC3A00CF1076 /* ViewController.swift */; };
@@ -18,6 +23,11 @@
 
 /* Begin PBXFileReference section */
 		35145C22E425907B3D7F9AF8 /* Pods-GistGG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GistGG.release.xcconfig"; path = "Target Support Files/Pods-GistGG/Pods-GistGG.release.xcconfig"; sourceTree = "<group>"; };
+		589152B0261507AA003A3EAC /* Gist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gist.swift; sourceTree = "<group>"; };
+		589152B626150918003A3EAC /* GistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistManager.swift; sourceTree = "<group>"; };
+		589152B92615098E003A3EAC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		589153132616584F003A3EAC /* GistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistViewController.swift; sourceTree = "<group>"; };
+		589153172616BEBD003A3EAC /* GistBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistBuilder.swift; sourceTree = "<group>"; };
 		5891CD7C2614BC3A00CF1076 /* GistGG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GistGG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5891CD7F2614BC3A00CF1076 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5891CD812614BC3A00CF1076 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,8 +66,44 @@
 				FD066A6388AB18A8CDCB05EF /* Pods-GistGG.debug.xcconfig */,
 				35145C22E425907B3D7F9AF8 /* Pods-GistGG.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		589152AC2615071C003A3EAC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5891CD852614BC3A00CF1076 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		589152AD26150725003A3EAC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5891CD832614BC3A00CF1076 /* ViewController.swift */,
+				589153132616584F003A3EAC /* GistViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		589152AE26150761003A3EAC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5891CD882614BC3E00CF1076 /* Assets.xcassets */,
+				5891CD8A2614BC3E00CF1076 /* LaunchScreen.storyboard */,
+				589152B92615098E003A3EAC /* Constants.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		589152AF26150788003A3EAC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				589152B0261507AA003A3EAC /* Gist.swift */,
+				589152B626150918003A3EAC /* GistManager.swift */,
+				589153172616BEBD003A3EAC /* GistBuilder.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		5891CD732614BC3A00CF1076 = {
@@ -83,11 +129,11 @@
 			children = (
 				5891CD7F2614BC3A00CF1076 /* AppDelegate.swift */,
 				5891CD812614BC3A00CF1076 /* SceneDelegate.swift */,
-				5891CD832614BC3A00CF1076 /* ViewController.swift */,
-				5891CD852614BC3A00CF1076 /* Main.storyboard */,
-				5891CD882614BC3E00CF1076 /* Assets.xcassets */,
-				5891CD8A2614BC3E00CF1076 /* LaunchScreen.storyboard */,
 				5891CD8D2614BC3E00CF1076 /* Info.plist */,
+				589152AF26150788003A3EAC /* Model */,
+				589152AC2615071C003A3EAC /* View */,
+				589152AD26150725003A3EAC /* Controller */,
+				589152AE26150761003A3EAC /* Supporting Files */,
 			);
 			path = GistGG;
 			sourceTree = "<group>";
@@ -206,7 +252,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				589152B726150918003A3EAC /* GistManager.swift in Sources */,
+				589153142616584F003A3EAC /* GistViewController.swift in Sources */,
+				589153182616BEBD003A3EAC /* GistBuilder.swift in Sources */,
+				589152B1261507AA003A3EAC /* Gist.swift in Sources */,
 				5891CD842614BC3A00CF1076 /* ViewController.swift in Sources */,
+				589152BA2615098E003A3EAC /* Constants.swift in Sources */,
 				5891CD802614BC3A00CF1076 /* AppDelegate.swift in Sources */,
 				5891CD822614BC3A00CF1076 /* SceneDelegate.swift in Sources */,
 			);

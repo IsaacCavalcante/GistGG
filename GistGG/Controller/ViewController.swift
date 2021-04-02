@@ -31,10 +31,19 @@ class ViewController: UIViewController {
         readerVC.delegate = self
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         readerVC.modalPresentationStyle = .formSheet
        
         present(readerVC, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Segue.gistSegue{
+            if let url = sender as? String{
+                let gistViewController = segue.destination as! GistViewController
+                gistViewController.gistUrl = url
+            }
+        }
     }
 }
 
@@ -43,9 +52,10 @@ class ViewController: UIViewController {
 //MARK: - QRCodeReaderViewControllerDelegate
 extension ViewController: QRCodeReaderViewControllerDelegate {
     func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
-      reader.stopScanning()
-
-      dismiss(animated: true, completion: nil)
+        reader.stopScanning()
+        
+        dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: K.Segue.gistSegue, sender: result.value)
     }
 
     //This is an optional delegate method, that allows you to be notified when the user switches the cameraName
