@@ -12,6 +12,11 @@
 		589152BA2615098E003A3EAC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589152B92615098E003A3EAC /* Constants.swift */; };
 		589153142616584F003A3EAC /* GistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589153132616584F003A3EAC /* GistViewController.swift */; };
 		589153182616BEBD003A3EAC /* GistBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589153172616BEBD003A3EAC /* GistBuilder.swift */; };
+		589153312617BD29003A3EAC /* GistServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589153302617BD29003A3EAC /* GistServices.swift */; };
+		5891535F2617FF28003A3EAC /* GistComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891535E2617FF28003A3EAC /* GistComment.swift */; };
+		589153622617FF4D003A3EAC /* GistCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589153612617FF4D003A3EAC /* GistCommit.swift */; };
+		589153652617FF5D003A3EAC /* GistFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589153642617FF5D003A3EAC /* GistFile.swift */; };
+		58915372261847F3003A3EAC /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58915371261847F3003A3EAC /* SpinnerViewController.swift */; };
 		5891CD802614BC3A00CF1076 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891CD7F2614BC3A00CF1076 /* AppDelegate.swift */; };
 		5891CD822614BC3A00CF1076 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891CD812614BC3A00CF1076 /* SceneDelegate.swift */; };
 		5891CD842614BC3A00CF1076 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891CD832614BC3A00CF1076 /* ViewController.swift */; };
@@ -28,6 +33,11 @@
 		589152B92615098E003A3EAC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		589153132616584F003A3EAC /* GistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistViewController.swift; sourceTree = "<group>"; };
 		589153172616BEBD003A3EAC /* GistBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistBuilder.swift; sourceTree = "<group>"; };
+		589153302617BD29003A3EAC /* GistServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistServices.swift; sourceTree = "<group>"; };
+		5891535E2617FF28003A3EAC /* GistComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistComment.swift; sourceTree = "<group>"; };
+		589153612617FF4D003A3EAC /* GistCommit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistCommit.swift; sourceTree = "<group>"; };
+		589153642617FF5D003A3EAC /* GistFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistFile.swift; sourceTree = "<group>"; };
+		58915371261847F3003A3EAC /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		5891CD7C2614BC3A00CF1076 /* GistGG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GistGG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5891CD7F2614BC3A00CF1076 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5891CD812614BC3A00CF1076 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +92,7 @@
 			children = (
 				5891CD832614BC3A00CF1076 /* ViewController.swift */,
 				589153132616584F003A3EAC /* GistViewController.swift */,
+				58915371261847F3003A3EAC /* SpinnerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -99,11 +110,30 @@
 		589152AF26150788003A3EAC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				589152B0261507AA003A3EAC /* Gist.swift */,
 				589152B626150918003A3EAC /* GistManager.swift */,
 				589153172616BEBD003A3EAC /* GistBuilder.swift */,
+				589152B0261507AA003A3EAC /* Gist.swift */,
+				5891535E2617FF28003A3EAC /* GistComment.swift */,
+				589153612617FF4D003A3EAC /* GistCommit.swift */,
+				589153642617FF5D003A3EAC /* GistFile.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		5891532E2617BB35003A3EAC /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				5891532F2617BC80003A3EAC /* Services */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		5891532F2617BC80003A3EAC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				589153302617BD29003A3EAC /* GistServices.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		5891CD732614BC3A00CF1076 = {
@@ -133,6 +163,7 @@
 				589152AF26150788003A3EAC /* Model */,
 				589152AC2615071C003A3EAC /* View */,
 				589152AD26150725003A3EAC /* Controller */,
+				5891532E2617BB35003A3EAC /* Networking */,
 				589152AE26150761003A3EAC /* Supporting Files */,
 			);
 			path = GistGG;
@@ -252,13 +283,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				589153652617FF5D003A3EAC /* GistFile.swift in Sources */,
 				589152B726150918003A3EAC /* GistManager.swift in Sources */,
 				589153142616584F003A3EAC /* GistViewController.swift in Sources */,
+				58915372261847F3003A3EAC /* SpinnerViewController.swift in Sources */,
+				589153622617FF4D003A3EAC /* GistCommit.swift in Sources */,
 				589153182616BEBD003A3EAC /* GistBuilder.swift in Sources */,
 				589152B1261507AA003A3EAC /* Gist.swift in Sources */,
 				5891CD842614BC3A00CF1076 /* ViewController.swift in Sources */,
+				5891535F2617FF28003A3EAC /* GistComment.swift in Sources */,
 				589152BA2615098E003A3EAC /* Constants.swift in Sources */,
 				5891CD802614BC3A00CF1076 /* AppDelegate.swift in Sources */,
+				589153312617BD29003A3EAC /* GistServices.swift in Sources */,
 				5891CD822614BC3A00CF1076 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,13 +11,17 @@ import SDWebImage
 class GistViewController: UIViewController {
     
     @IBOutlet weak var ownerImageView: UIImageView!
-    @IBOutlet weak var filesLabel: UILabel!
     @IBOutlet weak var commitsLabel: UILabel!
-    @IBOutlet weak var commentsLabel: UILabel!
+    @IBOutlet weak var commentsButton: UIButton!
     @IBOutlet weak var filesTableView: UITableView!
+    @IBOutlet weak var filesButton: UIButton!
     
     var gistUrl: String?
     private var gistManager = GistManager()
+    private var comments = [(String, String, Date)]()
+    private var files = [(String, String)]()
+    private let child = SpinnerViewController()
+    private var showFiles = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,61 +37,103 @@ class GistViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        // add the spinner view controller
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+        
+        guard let navBar = navigationController?.navigationBar else { fatalError("Navigation controller does not exist.")
+        }
+        navBar.tintColor = UIColor.white
+    }
+    
     private func loadGist(url: String) {
         let id = String(url.split(separator: "/").last!)
-        gistManager.fetchRequest(withId: id)
+        gistManager.fetchRequest(with: id)
+        filesTableView.reloadData()
+    }
+    @IBAction func commentsButtonTapped(_ sender: UIButton) {
+        showFiles = false
+        comments = gistManager.getComments()
+        filesTableView.reloadData()
+    }
+    @IBAction func filesButtonTapped(_ sender: UIButton) {
+        showFiles = true
+        files = gistManager.getFilesDictionary()
         filesTableView.reloadData()
     }
 }
 
 //MARK: - GistManagerDelegate
 extension GistViewController: GistManagerDelegate {
+    
     func updateGistInformation(_ gistManager: GistManager) {
         self.gistManager = gistManager
         
-        
         let numberOfFiles = gistManager.getNumberOfFiles()
+        let numberOfComments = gistManager.getNumberOfComments()
+        let numberOfCommits = gistManager.getNumberOfCommits()
         
-        let textBubleImage = NSTextAttachment()
-        textBubleImage.image = UIImage(systemName: "filemenu.and.selection")?.withTintColor(.white)
+        comments = gistManager.getComments()
+        
+        DispatchQueue.main.async {
 
-        let filesString = NSMutableAttributedString()
-        filesString.append(NSAttributedString(attachment: textBubleImage))
-        filesString.append(NSAttributedString(string: " \(numberOfFiles)"))
-        
-        
-        
-        filesLabel?.attributedText = filesString
-        
-        if let ownerName = gistManager.getGistOwnerName(){
-            navigationItem.title = ownerName
-        }
-        if let numberOfComents = gistManager.getNumberOfComents(){
+            if let ownerName = gistManager.getGistOwnerName(){
+                self.navigationItem.title = ownerName
+            }
+            
+            let textBubleImage = NSTextAttachment()
+            textBubleImage.image = UIImage(systemName: "arrow.right.doc.on.clipboard")?.withTintColor(.white)
+            
+            let filesString = NSMutableAttributedString()
+            filesString.append(NSAttributedString(string: "\(numberOfFiles) "))
+            filesString.append(NSAttributedString(attachment: textBubleImage))
+            self.filesButton.setAttributedTitle(filesString, for: .normal)
+            
+            self.filesButton.layer.borderWidth = 1
+            self.filesButton.layer.borderColor = UIColor.white.cgColor
+            self.filesButton.layer.cornerRadius = 15
+            self.filesButton.layer.masksToBounds = true
+         
+            
             let commentImage = NSTextAttachment()
             commentImage.image = UIImage(systemName: "text.bubble.fill")?.withTintColor(.white)
-
+            
             let comentsString = NSMutableAttributedString()
+            comentsString.append(NSAttributedString(string: "\(numberOfComments) "))
             comentsString.append(NSAttributedString(attachment: commentImage))
-            comentsString.append(NSAttributedString(string: " \(numberOfComents)"))
-            commentsLabel?.attributedText = comentsString
-        }
-        if let numberOfCommits = gistManager.getNumberOfCommits(){
+            self.commentsButton.setAttributedTitle(comentsString, for: .normal)
+            self.commentsButton.layer.borderWidth = 1
+            self.commentsButton.layer.borderColor = UIColor.white.cgColor
+            self.commentsButton.layer.cornerRadius = 15
+            self.commentsButton.layer.masksToBounds = true
+                
+            
             let commitImage = NSTextAttachment()
-            commitImage.image = UIImage(systemName: "person.3")?.withTintColor(.white)
+            commitImage.image = UIImage(systemName: "pencil.circle")?.withTintColor(.white)
 
             let commitsString = NSMutableAttributedString()
+            commitsString.append(NSAttributedString(string: "\(numberOfCommits) "))
             commitsString.append(NSAttributedString(attachment: commitImage))
-            commitsString.append(NSAttributedString(string: " \(numberOfCommits)"))
             
-            commitsLabel?.attributedText = commitsString
+            self.commitsLabel?.attributedText = commitsString
+            
+            
+            if let ownerImageUrl = gistManager.getGistUrlImage(){
+                self.ownerImageView?.sd_setImage(with: URL(string: ownerImageUrl))
+            }
+            
+            self.child.willMove(toParent: nil)
+            self.child.view.removeFromSuperview()
+            self.child.removeFromParent()
+            
+            self.filesTableView.reloadData()
         }
-        if let ownerImageUrl = gistManager.getGistUrlImage(){
-            ownerImageView?.sd_setImage(with: URL(string: ownerImageUrl))
-        }
-        
     }
     
-    func didFailWithError(error: GistManagerError) {
+    func didFailWithError(error: Error) {
         print(error)
     }
 }
@@ -100,13 +146,15 @@ extension GistViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        let numberOfRows = showFiles ? gistManager.getNumberOfComments() : gistManager.getNumberOfFiles()
+        return numberOfRows
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.Cell.fileCell, for: indexPath)
-        cell.textLabel?.text = "TEXTO"
-//        cell.textLabel?.text = "\(observablesElements[indexPath.row].identifier!): \(confidence)"
+        let text = showFiles ? files[indexPath.row].0 : comments[indexPath.row].1
+        cell.textLabel?.text = text
+        cell.textLabel?.textColor = UIColor.white
 
         return cell
     }

@@ -9,14 +9,17 @@ import Foundation
 
 class GistBuilder {
     private var id: String
-    private var ownerName: String?
+    private var ownerName: String
     private var ownerImageUrl: String?
-    private var coments: Int?
-    private var commits: Int?
-    private var files: [String:String]?
+    private var coments: [GistComment]?
+    private var commits: [GistCommit]?
+    private var files: [GistFile]?
+    private var createdAt: Date
     
-    init(id: String) {
+    init(id: String, ownerName: String, createdAt: Date) {
         self.id = id
+        self.ownerName = ownerName
+        self.createdAt = createdAt
     }
     
     func of(_ ownerName: String) -> GistBuilder {
@@ -29,22 +32,24 @@ class GistBuilder {
         return self
     }
     
-    func andNumberOfComents(_ coments: Int) -> GistBuilder{
+    func andComments(_ coments: [GistComment]) -> GistBuilder{
         self.coments = coments
         return self
     }
     
-    func andNumberOfComits(_ commits: Int) -> GistBuilder{
+    func andCommits(_ commits: [GistCommit]) -> GistBuilder{
         self.commits = commits
         return self
     }
     
-    func withFiles(_ files: [String:String]) -> GistBuilder{
+    func withFiles(_ files: [GistFile]) -> GistBuilder{
         self.files = files
         return self
     }
     
     func thatsAll() -> Gist{
-        return Gist(id: self.id, ownerName: self.ownerName ?? "", ownerImageUrl: self.ownerImageUrl ?? "", coments: self.coments ?? 0, commits: self.commits ?? 0, files: self.files ?? [String:String]())
+        let gist = Gist(id: self.id, ownerName: self.ownerName, ownerImageUrl: self.ownerImageUrl ?? "", coments: self.coments ?? [], commits: self.commits ?? [], files: self.files ?? [], createdAt: self.createdAt)
+        
+        return gist
     }
 }
