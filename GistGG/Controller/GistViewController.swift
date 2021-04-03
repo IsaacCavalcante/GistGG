@@ -77,6 +77,7 @@ extension GistViewController: GistManagerDelegate {
         let numberOfCommits = gistManager.getNumberOfCommits()
         
         comments = gistManager.getComments()
+        files = gistManager.getFilesDictionary()
         
         DispatchQueue.main.async {
 
@@ -146,13 +147,13 @@ extension GistViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numberOfRows = showFiles ? gistManager.getNumberOfComments() : gistManager.getNumberOfFiles()
+        let numberOfRows = showFiles ? files.count : comments.count
         return numberOfRows
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.Cell.fileCell, for: indexPath)
-        let text = showFiles ? files[indexPath.row].0 : comments[indexPath.row].1
+        let text = showFiles ?  files[indexPath.row].0 : comments[indexPath.row].1
         cell.textLabel?.text = text
         cell.textLabel?.textColor = UIColor.white
 
