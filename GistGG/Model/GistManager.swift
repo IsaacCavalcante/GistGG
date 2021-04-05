@@ -83,7 +83,7 @@ class GistManager{
                     let dateFormatter = ISO8601DateFormatter()
                     let createdAt = dateFormatter.date(from: object["created_at"].stringValue)!
 
-                    gistComments.append(GistComment(owner: object["user"]["login"].stringValue, body: object["body"].stringValue, createdAt: createdAt))
+                    gistComments.append(GistComment(owner: object["user"]["login"].stringValue, body: object["body"].stringValue, createdAt: createdAt, ownerImageUrl: object["user"]["avatar_url"].stringValue))
                 }
                 
             case .failure(_): break
@@ -142,39 +142,39 @@ class GistManager{
         return gist?.getOwnerImageUrl()
     }
     
-    func getCommits() -> [GistCommit] {
-        return gist?.getCommits() ?? [GistCommit]()
-    }
-    
     func getNumberOfComments() -> Int {
         return getComments().count
     }
     
     func getNumberOfCommits() -> Int {
-        return gist?.getCommits()?.count ?? 0
+        return gist?.getCommits().count ?? 0
     }
     
     func getNumberOfFiles() -> Int {
         return getFilesDictionary().count
     }
     
-    func getFilesDictionary() -> [(String,String)] {
-        var filesDictionary = [(String,String)]()
+    func getFilesDictionary() -> [(String,String,String)] {
+        var filesDictionary = [(String,String,String)]()
         
-        gist?.getFiles()?.forEach({ (file) in
-            filesDictionary.append((file.getName(), file.getBody()))
+        gist?.getFiles().forEach({ (file) in
+            filesDictionary.append((file.getName(), file.getLanguage(), file.getBody()))
         })
         
         return filesDictionary
     }
     
-    func getComments() -> [(String,String,Date)] {
-        var filesDictionary = [(String,String,Date)]()
+    func getComments() -> [(String,String,String,Date)] {
+        var filesDictionary = [(String,String,String,Date)]()
         
-        gist?.getComments()?.forEach({ (comment) in
-            filesDictionary.append((comment.getOwner(), comment.getBody(), comment.getCreatedAt()))
+        gist?.getComments().forEach({ (comment) in
+            filesDictionary.append((comment.getOwner(), comment.getOwnerImageUrl(),comment.getBody(), comment.getCreatedAt()))
         })
         
         return filesDictionary
+    }
+    
+    func getCommits() -> [GistCommit] {
+        return gist?.getCommits() ?? [GistCommit]()
     }
 }

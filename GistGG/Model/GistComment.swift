@@ -11,10 +11,12 @@ struct GistComment {
     private var owner: String
     private var body: String
     private var createdAt: Date
+    private var ownerImageUrl: String
     
-    init(owner: String, body: String, createdAt: Date) {
+    init(owner: String, body: String, createdAt: Date, ownerImageUrl: String) {
         self.owner = owner
         self.body = body
+        self.ownerImageUrl = ownerImageUrl
         self.createdAt = createdAt
     }
     
@@ -24,6 +26,10 @@ struct GistComment {
     
     func getBody() -> String{
         return self.body
+    }
+    
+    func getOwnerImageUrl() -> String{
+        return self.ownerImageUrl
     }
     
     func getCreatedAt() -> Date{

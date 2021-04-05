@@ -8,13 +8,24 @@
 import Foundation
 
 struct K {
+    
+    static let GistGG = "\u{f092} Gist GG"
 
     struct Cell {
         static let fileCell = "fileCell"
+        static let commentCell = "commentCell"
+        
+        struct Nib {
+            static let fileCellNibName = "FileTableViewCell"
+            static let commentCellNibName = "CommentTableViewCell"
+        }
     }
     
     struct Segue {
-        static let gistSegue = "ScanToGistSegue"
+        static let signInToScanSegue = "signInToScanSegue"
+        static let scanToGistSegue = "scanToGistSegue"
+        static let gistToviewCodeSegue = "gistToCodeViewSegue"
+        
     }
     
     struct Color {

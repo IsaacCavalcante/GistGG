@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,16 @@
 		589153622617FF4D003A3EAC /* GistCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589153612617FF4D003A3EAC /* GistCommit.swift */; };
 		589153652617FF5D003A3EAC /* GistFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589153642617FF5D003A3EAC /* GistFile.swift */; };
 		58915372261847F3003A3EAC /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58915371261847F3003A3EAC /* SpinnerViewController.swift */; };
+		5891537B2618D59B003A3EAC /* FileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589153792618D59A003A3EAC /* FileTableViewCell.swift */; };
+		5891537C2618D59B003A3EAC /* FileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5891537A2618D59A003A3EAC /* FileTableViewCell.xib */; };
+		589153812618F60F003A3EAC /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891537F2618F60F003A3EAC /* CommentTableViewCell.swift */; };
+		589153822618F60F003A3EAC /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589153802618F60F003A3EAC /* CommentTableViewCell.xib */; };
+		5891538B261928E1003A3EAC /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891538A261928E0003A3EAC /* CodeView.swift */; };
+		589153A326192E07003A3EAC /* CodeViewer in Frameworks */ = {isa = PBXBuildFile; productRef = 589153A226192E07003A3EAC /* CodeViewer */; };
+		589153A626192F05003A3EAC /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589153A526192F05003A3EAC /* CodeViewController.swift */; };
+		589153B926197F2F003A3EAC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 589153B826197F2F003A3EAC /* GoogleService-Info.plist */; };
+		589153BC261984CF003A3EAC /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589153BB261984CF003A3EAC /* SignInViewController.swift */; };
+		589153C7261AD63C003A3EAC /* Font Awesome 5 Brands Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 589153C6261AD63C003A3EAC /* Font Awesome 5 Brands Regular.ttf */; };
 		5891CD802614BC3A00CF1076 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891CD7F2614BC3A00CF1076 /* AppDelegate.swift */; };
 		5891CD822614BC3A00CF1076 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891CD812614BC3A00CF1076 /* SceneDelegate.swift */; };
 		5891CD842614BC3A00CF1076 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5891CD832614BC3A00CF1076 /* ViewController.swift */; };
@@ -38,6 +48,16 @@
 		589153612617FF4D003A3EAC /* GistCommit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistCommit.swift; sourceTree = "<group>"; };
 		589153642617FF5D003A3EAC /* GistFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistFile.swift; sourceTree = "<group>"; };
 		58915371261847F3003A3EAC /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
+		589153792618D59A003A3EAC /* FileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTableViewCell.swift; sourceTree = "<group>"; };
+		5891537A2618D59A003A3EAC /* FileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FileTableViewCell.xib; sourceTree = "<group>"; };
+		5891537F2618F60F003A3EAC /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		589153802618F60F003A3EAC /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
+		5891538A261928E0003A3EAC /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
+		5891539926192B9C003A3EAC /* ace.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ace.bundle; sourceTree = "<group>"; };
+		589153A526192F05003A3EAC /* CodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
+		589153B826197F2F003A3EAC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		589153BB261984CF003A3EAC /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		589153C6261AD63C003A3EAC /* Font Awesome 5 Brands Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Brands Regular.ttf"; sourceTree = "<group>"; };
 		5891CD7C2614BC3A00CF1076 /* GistGG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GistGG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5891CD7F2614BC3A00CF1076 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5891CD812614BC3A00CF1076 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +76,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6797A9B5A3BE7A0C2E1CE880 /* Pods_GistGG.framework in Frameworks */,
+				589153A326192E07003A3EAC /* CodeViewer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				5891CD852614BC3A00CF1076 /* Main.storyboard */,
+				5891537A2618D59A003A3EAC /* FileTableViewCell.xib */,
+				589153802618F60F003A3EAC /* CommentTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -90,9 +113,14 @@
 		589152AD26150725003A3EAC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				589153BB261984CF003A3EAC /* SignInViewController.swift */,
 				5891CD832614BC3A00CF1076 /* ViewController.swift */,
 				589153132616584F003A3EAC /* GistViewController.swift */,
 				58915371261847F3003A3EAC /* SpinnerViewController.swift */,
+				589153792618D59A003A3EAC /* FileTableViewCell.swift */,
+				5891537F2618F60F003A3EAC /* CommentTableViewCell.swift */,
+				5891538A261928E0003A3EAC /* CodeView.swift */,
+				589153A526192F05003A3EAC /* CodeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -136,6 +164,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		5891539826192B9C003A3EAC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5891539926192B9C003A3EAC /* ace.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		5891CD732614BC3A00CF1076 = {
 			isa = PBXGroup;
 			children = (
@@ -160,10 +196,13 @@
 				5891CD7F2614BC3A00CF1076 /* AppDelegate.swift */,
 				5891CD812614BC3A00CF1076 /* SceneDelegate.swift */,
 				5891CD8D2614BC3E00CF1076 /* Info.plist */,
+				589153B826197F2F003A3EAC /* GoogleService-Info.plist */,
+				589153C6261AD63C003A3EAC /* Font Awesome 5 Brands Regular.ttf */,
 				589152AF26150788003A3EAC /* Model */,
 				589152AC2615071C003A3EAC /* View */,
 				589152AD26150725003A3EAC /* Controller */,
 				5891532E2617BB35003A3EAC /* Networking */,
+				5891539826192B9C003A3EAC /* Resources */,
 				589152AE26150761003A3EAC /* Supporting Files */,
 			);
 			path = GistGG;
@@ -187,6 +226,9 @@
 			dependencies = (
 			);
 			name = GistGG;
+			packageProductDependencies = (
+				589153A226192E07003A3EAC /* CodeViewer */,
+			);
 			productName = GistGG;
 			productReference = 5891CD7C2614BC3A00CF1076 /* GistGG.app */;
 			productType = "com.apple.product-type.application";
@@ -214,6 +256,9 @@
 				Base,
 			);
 			mainGroup = 5891CD732614BC3A00CF1076;
+			packageReferences = (
+				589153A126192E07003A3EAC /* XCRemoteSwiftPackageReference "CodeViewer" */,
+			);
 			productRefGroup = 5891CD7D2614BC3A00CF1076 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -229,8 +274,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5891CD8C2614BC3E00CF1076 /* LaunchScreen.storyboard in Resources */,
+				5891537C2618D59B003A3EAC /* FileTableViewCell.xib in Resources */,
+				589153C7261AD63C003A3EAC /* Font Awesome 5 Brands Regular.ttf in Resources */,
 				5891CD892614BC3E00CF1076 /* Assets.xcassets in Resources */,
 				5891CD872614BC3A00CF1076 /* Main.storyboard in Resources */,
+				589153822618F60F003A3EAC /* CommentTableViewCell.xib in Resources */,
+				589153B926197F2F003A3EAC /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,18 +333,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				589153652617FF5D003A3EAC /* GistFile.swift in Sources */,
+				5891537B2618D59B003A3EAC /* FileTableViewCell.swift in Sources */,
 				589152B726150918003A3EAC /* GistManager.swift in Sources */,
 				589153142616584F003A3EAC /* GistViewController.swift in Sources */,
 				58915372261847F3003A3EAC /* SpinnerViewController.swift in Sources */,
+				589153A626192F05003A3EAC /* CodeViewController.swift in Sources */,
 				589153622617FF4D003A3EAC /* GistCommit.swift in Sources */,
 				589153182616BEBD003A3EAC /* GistBuilder.swift in Sources */,
+				589153812618F60F003A3EAC /* CommentTableViewCell.swift in Sources */,
 				589152B1261507AA003A3EAC /* Gist.swift in Sources */,
 				5891CD842614BC3A00CF1076 /* ViewController.swift in Sources */,
 				5891535F2617FF28003A3EAC /* GistComment.swift in Sources */,
 				589152BA2615098E003A3EAC /* Constants.swift in Sources */,
 				5891CD802614BC3A00CF1076 /* AppDelegate.swift in Sources */,
+				589153BC261984CF003A3EAC /* SignInViewController.swift in Sources */,
 				589153312617BD29003A3EAC /* GistServices.swift in Sources */,
 				5891CD822614BC3A00CF1076 /* SceneDelegate.swift in Sources */,
+				5891538B261928E1003A3EAC /* CodeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,7 +507,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.IsaacCavalcante.GistGG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -473,7 +527,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.IsaacCavalcante.GistGG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -499,6 +553,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		589153A126192E07003A3EAC /* XCRemoteSwiftPackageReference "CodeViewer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dwarvesf/CodeViewer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		589153A226192E07003A3EAC /* CodeViewer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 589153A126192E07003A3EAC /* XCRemoteSwiftPackageReference "CodeViewer" */;
+			productName = CodeViewer;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5891CD742614BC3A00CF1076 /* Project object */;
 }

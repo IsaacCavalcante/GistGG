@@ -25,20 +25,21 @@ class ViewController: UIViewController {
         
         return QRCodeReaderViewController(builder: builder)
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         readerVC.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        readerVC.modalPresentationStyle = .formSheet
-       
-        present(readerVC, animated: true, completion: nil)
+        self.addChild(self.readerVC)
+        self.readerVC.view.frame = self.view.frame
+        self.view.addSubview(self.readerVC.view)
+        self.readerVC.didMove(toParent: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.Segue.gistSegue{
+        if segue.identifier == K.Segue.scanToGistSegue{
             if let url = sender as? String{
                 let gistViewController = segue.destination as! GistViewController
                 gistViewController.gistUrl = url
@@ -55,19 +56,19 @@ extension ViewController: QRCodeReaderViewControllerDelegate {
         reader.stopScanning()
         
         dismiss(animated: true, completion: nil)
-        performSegue(withIdentifier: K.Segue.gistSegue, sender: result.value)
+        performSegue(withIdentifier: K.Segue.scanToGistSegue, sender: result.value)
     }
-
+    
     //This is an optional delegate method, that allows you to be notified when the user switches the cameraName
     //By pressing on the switch camera button
     func reader(_ reader: QRCodeReaderViewController, didSwitchCamera newCaptureDevice: AVCaptureDeviceInput) {
         print("Switching capture to: \(newCaptureDevice.device.localizedName)")
     }
-
+    
     func readerDidCancel(_ reader: QRCodeReaderViewController) {
-      reader.stopScanning()
-
-      dismiss(animated: true, completion: nil)
+        reader.stopScanning()
+        
+        dismiss(animated: true, completion: nil)
     }
 }
 

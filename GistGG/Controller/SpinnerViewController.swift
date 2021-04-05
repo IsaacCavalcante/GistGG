@@ -9,7 +9,7 @@ import UIKit
 
 class SpinnerViewController: UIViewController {
     var spinner = UIActivityIndicatorView(style: .large)
-
+    
     override func loadView() {
         
         view = UIView()
@@ -20,11 +20,11 @@ class SpinnerViewController: UIViewController {
         blurEffectView.frame = view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(blurEffectView)
-
+        
         spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.startAnimating()
         view.addSubview(spinner)
-
+        
         spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
