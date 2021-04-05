@@ -8,8 +8,9 @@
 import UIKit
 import AVFoundation
 import QRCodeReader
+import FirebaseAuth
 
-class ViewController: UIViewController {
+class ScanViewController: UIViewController {
     
     lazy var readerVC: QRCodeReaderViewController = {
         let builder = QRCodeReaderViewControllerBuilder {
@@ -29,6 +30,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         readerVC.delegate = self
+        
+        navigationItem.hidesBackButton = true
+        navigationItem.largeTitleDisplayMode = .never
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,12 +50,22 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func sigOutTapped(_ sender: UIBarButtonItem) {
+        do {
+            try Auth.auth().signOut()
+            navigationController?.popViewController(animated: true)
+        } catch {
+            print("error to sign out")
+        }
+    }
+    
 }
 
 
 
 //MARK: - QRCodeReaderViewControllerDelegate
-extension ViewController: QRCodeReaderViewControllerDelegate {
+extension ScanViewController: QRCodeReaderViewControllerDelegate {
     func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
         reader.stopScanning()
         

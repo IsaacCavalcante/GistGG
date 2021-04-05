@@ -7,7 +7,12 @@
 
 import UIKit
 
+protocol SpinnerDelegate: UIViewController {
+    var spinnerView: SpinnerViewController { get set }
+}
+
 class SpinnerViewController: UIViewController {
+    var delegate: SpinnerDelegate?
     var spinner = UIActivityIndicatorView(style: .large)
     
     override func loadView() {
@@ -27,5 +32,18 @@ class SpinnerViewController: UIViewController {
         
         spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
+    func spinnerOn() {
+        if let viewController = delegate {
+            viewController.addChild(self)
+            self.view.frame = viewController.view.frame
+            viewController.view.addSubview(self.view)
+        }
+    }
+    
+    func spinnerOff() {
+        delegate?.spinnerView.willMove(toParent: nil)
+        delegate?.spinnerView.view.removeFromSuperview()
     }
 }

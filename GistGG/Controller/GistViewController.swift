@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-class GistViewController: UIViewController {
+class GistViewController: UIViewController, UINavigationControllerDelegate, SpinnerDelegate {
     
     @IBOutlet weak var ownerImageView: UIImageView!
     @IBOutlet weak var commitsLabel: UILabel!
@@ -17,10 +17,10 @@ class GistViewController: UIViewController {
     @IBOutlet weak var filesButton: UIButton!
     
     var gistUrl: String?
+    var spinnerView = SpinnerViewController()
     private var gistManager = GistManager()
     private var comments = [(String, String, String, Date)]()
     private var files = [(String, String, String)]()
-    private let spinnerView = SpinnerViewController()
     private var showFiles = false
     
     override func viewDidLoad() {
@@ -28,17 +28,21 @@ class GistViewController: UIViewController {
         filesTableView.delegate = self
         filesTableView.dataSource = self
         gistManager.delegate = self
+        spinnerView.delegate = self
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         filesTableView.register(UINib(nibName: K.Cell.Nib.commentCellNibName, bundle: nil), forCellReuseIdentifier: K.Cell.commentCell)
         
         filesTableView.register(UINib(nibName: K.Cell.Nib.fileCellNibName, bundle: nil), forCellReuseIdentifier: K.Cell.fileCell)
         
+        roundButton(button: commentsButton)
+        roundButton(button: filesButton)
+        
         loadGist(url: gistUrl!)
         
         ownerImageView.layer.cornerRadius = ownerImageView.frame.size.width/2
         ownerImageView.clipsToBounds = true
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,39 +51,26 @@ class GistViewController: UIViewController {
         navBar.tintColor = UIColor.white
     }
     
-    private func loadGist(url: String) {
-        addChild(spinnerView)
-        spinnerView.view.frame = view.frame
-        view.addSubview(spinnerView.view)
-        spinnerView.didMove(toParent: self)
-        
-        let id = String(url.split(separator: "/").last!)
-        gistManager.fetchRequest(with: id)
-        filesTableView.reloadData()
-    }
     @IBAction func commentsButtonTapped(_ sender: UIButton) {
         showFiles = false
-        
-        filesTableView.reloadData()
-        
-        var indexPathToReload = [IndexPath]()
-        for index in comments.indices {
-            let indexPath = IndexPath(row: index, section: 0)
-            indexPathToReload.append(indexPath)
-        }
-        filesTableView.reloadRows(at: indexPathToReload, with: .right)
+        reloadTableViewWithEffect(objects: comments, effect: .right)
     }
+    
     @IBAction func filesButtonTapped(_ sender: UIButton) {
         showFiles = true
-        
+        reloadTableViewWithEffect(objects: files, effect: .left)
+    }
+    
+    private func reloadTableViewWithEffect<T>(objects: [T], effect: UITableView.RowAnimation) {
         filesTableView.reloadData()
         
         var indexPathToReload = [IndexPath]()
-        for index in files.indices {
+        for index in objects.indices {
             let indexPath = IndexPath(row: index, section: 0)
             indexPathToReload.append(indexPath)
         }
-        filesTableView.reloadRows(at: indexPathToReload, with: .left)
+        
+        filesTableView.reloadRows(at: indexPathToReload, with: effect)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -90,6 +81,32 @@ class GistViewController: UIViewController {
                 destinationVC.file = files[indexPath.row]
             }
         }
+    }
+    
+    private func roundButton(button: UIButton) {
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.cornerRadius = 15
+        button.layer.masksToBounds = true
+    }
+    
+    private func setUpAttributedString (withIcon icon: String, text: String, andColor color: UIColor) -> NSAttributedString{
+        let imageAttributedString = NSTextAttachment()
+        imageAttributedString.image = UIImage(systemName: icon)?.withTintColor(color)
+        
+        let attributedString = NSMutableAttributedString()
+        attributedString.append(NSAttributedString(string: text))
+        attributedString.append(NSAttributedString(attachment: imageAttributedString))
+        
+        return attributedString
+    }
+    
+    private func loadGist(url: String) {
+        spinnerView.spinnerOn()
+        
+        let id = String(url.split(separator: "/").last!)
+        gistManager.fetchRequest(with: id)
+        filesTableView.reloadData()
     }
 }
 
@@ -111,43 +128,15 @@ extension GistViewController: GistManagerDelegate {
             if let ownerName = gistManager.getGistOwnerName(){
                 self.navigationItem.title = ownerName
             }
+             
+            let filesButtonAttributedString = self.setUpAttributedString(withIcon: "arrow.right.doc.on.clipboard", text: "\(numberOfFiles) ", andColor: .white)
+            self.filesButton.setAttributedTitle(filesButtonAttributedString, for: .normal)
             
-            let textBubleImage = NSTextAttachment()
-            textBubleImage.image = UIImage(systemName: "arrow.right.doc.on.clipboard")?.withTintColor(.white)
+            let commentsButtonAttributedString = self.setUpAttributedString(withIcon: "text.bubble.fill", text: "\(numberOfComments) ", andColor: .white)
+            self.commentsButton.setAttributedTitle(commentsButtonAttributedString, for: .normal)
             
-            let filesString = NSMutableAttributedString()
-            filesString.append(NSAttributedString(string: "\(numberOfFiles) "))
-            filesString.append(NSAttributedString(attachment: textBubleImage))
-            self.filesButton.setAttributedTitle(filesString, for: .normal)
-            
-            self.filesButton.layer.borderWidth = 1
-            self.filesButton.layer.borderColor = UIColor.white.cgColor
-            self.filesButton.layer.cornerRadius = 15
-            self.filesButton.layer.masksToBounds = true
-            
-            
-            let commentImage = NSTextAttachment()
-            commentImage.image = UIImage(systemName: "text.bubble.fill")?.withTintColor(.white)
-            
-            let comentsString = NSMutableAttributedString()
-            comentsString.append(NSAttributedString(string: "\(numberOfComments) "))
-            comentsString.append(NSAttributedString(attachment: commentImage))
-            self.commentsButton.setAttributedTitle(comentsString, for: .normal)
-            self.commentsButton.layer.borderWidth = 1
-            self.commentsButton.layer.borderColor = UIColor.white.cgColor
-            self.commentsButton.layer.cornerRadius = 15
-            self.commentsButton.layer.masksToBounds = true
-            
-            
-            let commitImage = NSTextAttachment()
-            commitImage.image = UIImage(systemName: "pencil")?.withTintColor(.white)
-            
-            let commitsString = NSMutableAttributedString()
-            commitsString.append(NSAttributedString(string: "\(numberOfCommits) "))
-            commitsString.append(NSAttributedString(attachment: commitImage))
-            
-            self.commitsLabel?.attributedText = commitsString
-            
+            let commitsLabelAttributedString = self.setUpAttributedString(withIcon: "pencil", text: "\(numberOfCommits) ", andColor: .white)
+            self.commitsLabel?.attributedText = commitsLabelAttributedString
             
             if let ownerImageUrl = gistManager.getGistUrlImage(){
                 self.ownerImageView?.sd_setImage(with: URL(string: ownerImageUrl))
@@ -155,11 +144,7 @@ extension GistViewController: GistManagerDelegate {
                 self.ownerImageView?.isHidden = true
             }
             
-            self.spinnerView.willMove(toParent: nil)
-            self.spinnerView.view.removeFromSuperview()
-            self.spinnerView.removeFromParent()
-            
-            self.filesTableView.reloadData()
+            self.spinnerView.spinnerOff()
         }
     }
     

@@ -8,16 +8,17 @@
 import UIKit
 import FirebaseAuth
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, SpinnerDelegate {
     
     @IBOutlet weak var gistGGLabel: UILabel!
-    private let spinnerView = SpinnerViewController()
-    var provider = OAuthProvider(providerID: "github.com")
+    var spinnerView = SpinnerViewController()
+    private var provider = OAuthProvider(providerID: "github.com")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         gistGGLabel.font = UIFont(name: "Font Awesome 5 Brands", size: 50)
         provider.scopes = ["gist"]
+        spinnerView.delegate = self
         
         let titleText = K.GistGG
         gistGGLabel.text = ""
@@ -45,42 +46,38 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func logInTapped(_ sender: UIButton) {
-        self.addChild(self.spinnerView)
-        self.spinnerView.view.frame = self.view.frame
-        self.view.addSubview(self.spinnerView.view)
-        self.spinnerView.didMove(toParent: self)
+        spinnerView.spinnerOn()
         provider.getCredentialWith(nil) { credential, error in
             if error != nil {
-                self.spinnerView.willMove(toParent: nil)
-                self.spinnerView.view.removeFromSuperview()
-                self.spinnerView.removeFromParent()
-                // Handle error.
-            }
-            
-            
-            
-            if credential != nil {
-                Auth.auth().signIn(with: credential!) { authResult, error in
-                    self.spinnerView.willMove(toParent: nil)
-                    self.spinnerView.view.removeFromSuperview()
-                    self.spinnerView.removeFromParent()
-                    if error != nil {
-                        // Handle error.
+                self.spinnerView.spinnerOff()
+                self.showAlertError(errorMessage: "Couldn't login in GitHub")
+            } else {
+                if let credential = credential {
+                    Auth.auth().signIn(with: credential) { authResult, error in
+                        self.spinnerView.willMove(toParent: nil)
+                        self.spinnerView.view.removeFromSuperview()
+                        if let error = error {
+                            print(error)
+                            self.showAlertError(errorMessage: "Couldn't login in GitHub")
+                        } else {
+                            guard let oauthCredential = authResult?.credential as? OAuthCredential else {
+                                return
+                            }
+                            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                            appDelegate.gistToken = oauthCredential.accessToken!
+                            self.performSegue(withIdentifier: K.Segue.signInToScanSegue, sender: nil)
+                        }
                     }
-                    // User is signed in.
-                    // IdP data available in authResult.additionalUserInfo.profile.
-                    
-                    guard let oauthCredential = authResult?.credential as? OAuthCredential else {
-                        return
-                    }
-                    print(oauthCredential.accessToken)
-                    self.performSegue(withIdentifier: K.Segue.signInToScanSegue, sender: nil)
-                    // GitHub OAuth access token can also be retrieved by:
-                    // oauthCredential.accessToken
-                    // GitHub OAuth ID token can be retrieved by calling:
-                    // oauthCredential.idToken
                 }
+                
             }
         }
+    }
+    
+    private func showAlertError (errorMessage: String) {
+        let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
 }
