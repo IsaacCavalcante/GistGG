@@ -217,28 +217,11 @@
                         <outlet property="contentTableView" destination="6R3-c3-JGK" id="h35-QL-9ZQ"/>
                         <outlet property="filesButton" destination="yV7-S2-8yk" id="cc7-Hc-v9M"/>
                         <outlet property="ownerImageView" destination="ZP3-LP-AqJ" id="NAf-uC-OyK"/>
-                        <segue destination="77w-Bb-0da" kind="show" identifier="gistToCodeViewSegue" id="vwn-rA-aOw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kZ9-ZJ-fmp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2402.898550724638" y="53.571428571428569"/>
-        </scene>
-        <!--Code View Controller-->
-        <scene sceneID="gmR-r0-Lt2">
-            <objects>
-                <viewController id="77w-Bb-0da" customClass="CodeViewController" customModule="GistGG" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ADY-Ds-yVG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="diT-0z-MTS"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="csl-oP-Ded"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rIf-1u-kT2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3234.7826086956525" y="53.571428571428569"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="75g-1D-imA">

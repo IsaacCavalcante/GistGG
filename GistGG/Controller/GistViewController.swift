@@ -98,16 +98,6 @@ class GistViewController: UIViewController, UINavigationControllerDelegate, Spin
         contentTableView.reloadRows(at: indexPathToReload, with: effect)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == K.Segue.gistToviewCodeSegue){
-            let destinationVC = segue.destination as! CodeViewController
-            
-            if let indexPath = contentTableView.indexPathForSelectedRow {
-                destinationVC.file = files[indexPath.row]
-            }
-        }
-    }
-    
     private func roundButton(button: UIButton) {
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.white.cgColor
@@ -205,13 +195,6 @@ extension GistViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfRows = showFiles ? files.count : comments.count
         return numberOfRows
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(showFiles){
-            performSegue(withIdentifier: K.Segue.gistToviewCodeSegue, sender: nil)
-            contentTableView.deselectRow(at: indexPath, animated: true)
-        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
