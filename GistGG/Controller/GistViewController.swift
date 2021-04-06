@@ -13,8 +13,10 @@ class GistViewController: UIViewController, UINavigationControllerDelegate, Spin
     @IBOutlet weak var ownerImageView: UIImageView!
     @IBOutlet weak var commitsLabel: UILabel!
     @IBOutlet weak var commentsButton: UIButton!
-    @IBOutlet weak var filesTableView: UITableView!
+    @IBOutlet weak var contentTableView: UITableView!
     @IBOutlet weak var filesButton: UIButton!
+    @IBOutlet weak var commentButton: UIButton!
+    @IBOutlet weak var commentTextField: UITextField!
     
     var gistUrl: String?
     var spinnerView = SpinnerViewController()
@@ -25,24 +27,30 @@ class GistViewController: UIViewController, UINavigationControllerDelegate, Spin
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        filesTableView.delegate = self
-        filesTableView.dataSource = self
+        contentTableView.delegate = self
+        contentTableView.dataSource = self
         gistManager.delegate = self
         spinnerView.delegate = self
         
+//        contentTableView.rowHeight  = UITableView.automaticDimension
+//        contentTableView.estimatedRowHeight = 80
+        
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        filesTableView.register(UINib(nibName: K.Cell.Nib.commentCellNibName, bundle: nil), forCellReuseIdentifier: K.Cell.commentCell)
-        
-        filesTableView.register(UINib(nibName: K.Cell.Nib.fileCellNibName, bundle: nil), forCellReuseIdentifier: K.Cell.fileCell)
+        contentTableView.register(UINib(nibName: K.Cell.Nib.commentCellNibName, bundle: nil), forCellReuseIdentifier: K.Cell.commentCell)
+        contentTableView.register(UINib(nibName: K.Cell.Nib.fileCellNibName, bundle: nil), forCellReuseIdentifier: K.Cell.fileCell)
         
         roundButton(button: commentsButton)
         roundButton(button: filesButton)
         
-        loadGist(url: gistUrl!)
+        let commentButtonAttributedString = self.setUpAttributedString(withIcon: "paperplane.fill")
+        self.commentButton.setAttributedTitle(commentButtonAttributedString, for: .normal)
         
         ownerImageView.layer.cornerRadius = ownerImageView.frame.size.width/2
         ownerImageView.clipsToBounds = true
+        
+        loadGist(url: gistUrl!)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,8 +69,25 @@ class GistViewController: UIViewController, UINavigationControllerDelegate, Spin
         reloadTableViewWithEffect(objects: files, effect: .left)
     }
     
+    @IBAction func commentButtonTapped(_ sender: UIButton) {
+        if let comment = commentTextField.text {
+            gistManager.createComment(comment: comment)
+            commentTextField.text = ""
+            commentTextField.resignFirstResponder()
+        } else {
+            showAlertError(errorMessage: "Write some texto to create a comment")
+        }
+    }
+    
+    private func showAlertError (errorMessage: String) {
+        let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
     private func reloadTableViewWithEffect<T>(objects: [T], effect: UITableView.RowAnimation) {
-        filesTableView.reloadData()
+        contentTableView.reloadData()
         
         var indexPathToReload = [IndexPath]()
         for index in objects.indices {
@@ -70,14 +95,14 @@ class GistViewController: UIViewController, UINavigationControllerDelegate, Spin
             indexPathToReload.append(indexPath)
         }
         
-        filesTableView.reloadRows(at: indexPathToReload, with: effect)
+        contentTableView.reloadRows(at: indexPathToReload, with: effect)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == K.Segue.gistToviewCodeSegue){
             let destinationVC = segue.destination as! CodeViewController
             
-            if let indexPath = filesTableView.indexPathForSelectedRow {
+            if let indexPath = contentTableView.indexPathForSelectedRow {
                 destinationVC.file = files[indexPath.row]
             }
         }
@@ -90,9 +115,9 @@ class GistViewController: UIViewController, UINavigationControllerDelegate, Spin
         button.layer.masksToBounds = true
     }
     
-    private func setUpAttributedString (withIcon icon: String, text: String, andColor color: UIColor) -> NSAttributedString{
+    private func setUpAttributedString (withIcon icon: String, text: String = "", andColor color: UIColor? = .white) -> NSAttributedString{
         let imageAttributedString = NSTextAttachment()
-        imageAttributedString.image = UIImage(systemName: icon)?.withTintColor(color)
+        imageAttributedString.image = UIImage(systemName: icon)?.withTintColor(color!)
         
         let attributedString = NSMutableAttributedString()
         attributedString.append(NSAttributedString(string: text))
@@ -104,9 +129,8 @@ class GistViewController: UIViewController, UINavigationControllerDelegate, Spin
     private func loadGist(url: String) {
         spinnerView.spinnerOn()
         
-        let id = String(url.split(separator: "/").last!)
-        gistManager.fetchRequest(with: id)
-        filesTableView.reloadData()
+        let url = gistManager.mountUrl(parameters: String(url.split(separator: "/").last!))
+        gistManager.performRequest(url: url)
     }
 }
 
@@ -121,7 +145,7 @@ extension GistViewController: GistManagerDelegate {
         let numberOfCommits = gistManager.getNumberOfCommits()
         
         comments = gistManager.getComments()
-        files = gistManager.getFilesDictionary()
+        files = gistManager.getFiles()
         
         DispatchQueue.main.async {
             
@@ -129,13 +153,13 @@ extension GistViewController: GistManagerDelegate {
                 self.navigationItem.title = ownerName
             }
              
-            let filesButtonAttributedString = self.setUpAttributedString(withIcon: "arrow.right.doc.on.clipboard", text: "\(numberOfFiles) ", andColor: .white)
+            let filesButtonAttributedString = self.setUpAttributedString(withIcon: "arrow.right.doc.on.clipboard", text: "\(numberOfFiles) ")
             self.filesButton.setAttributedTitle(filesButtonAttributedString, for: .normal)
             
-            let commentsButtonAttributedString = self.setUpAttributedString(withIcon: "text.bubble.fill", text: "\(numberOfComments) ", andColor: .white)
+            let commentsButtonAttributedString = self.setUpAttributedString(withIcon: "text.bubble.fill", text: "\(numberOfComments) ")
             self.commentsButton.setAttributedTitle(commentsButtonAttributedString, for: .normal)
             
-            let commitsLabelAttributedString = self.setUpAttributedString(withIcon: "pencil", text: "\(numberOfCommits) ", andColor: .white)
+            let commitsLabelAttributedString = self.setUpAttributedString(withIcon: "pencil", text: "\(numberOfCommits) ")
             self.commitsLabel?.attributedText = commitsLabelAttributedString
             
             if let ownerImageUrl = gistManager.getGistUrlImage(){
@@ -145,11 +169,29 @@ extension GistViewController: GistManagerDelegate {
             }
             
             self.spinnerView.spinnerOff()
+            self.contentTableView.reloadData()
+        }
+    }
+    
+    func updateGistComments(_ gistManager: GistManager) {
+        self.comments = self.gistManager.getComments()
+        DispatchQueue.main.async {
+            let numberOfComments = self.gistManager.getNumberOfComments()
+            
+            let commentsButtonAttributedString = self.setUpAttributedString(withIcon: "text.bubble.fill", text: "\(numberOfComments) ")
+            self.commentsButton.setAttributedTitle(commentsButtonAttributedString, for: .normal)
+            
+            self.contentTableView.insertRows(at: [IndexPath(row: self.comments.count - 1, section: 0)], with: .right)
+            self.contentTableView.scrollToRow(at: IndexPath(row: self.comments.count - 1, section: 0), at: .bottom, animated: true)
         }
     }
     
     func didFailWithError(error: Error) {
-        print(error)
+        showAlertError(errorMessage: "Error ao tentar carregar gist")
+    }
+    
+    func didFailCreateCommentWithError(error: Error) {
+        showAlertError(errorMessage: "Error ao tentar criar comentário. Seu comentário não foi criado.")
     }
 }
 
@@ -168,6 +210,7 @@ extension GistViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(showFiles){
             performSegue(withIdentifier: K.Segue.gistToviewCodeSegue, sender: nil)
+            contentTableView.deselectRow(at: indexPath, animated: true)
         }
     }
     

@@ -37,6 +37,7 @@ PODS:
   - GoogleUtilities/Reachability (7.2.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.5.0)
+  - IQKeyboardManagerSwift (6.5.6)
   - nanopb (2.30907.0):
     - nanopb/decode (= 2.30907.0)
     - nanopb/encode (= 2.30907.0)
@@ -52,6 +53,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 5.2)
   - Firebase/Auth
+  - IQKeyboardManagerSwift
   - QRCodeReader.swift (~> 10.1.0)
   - SDWebImage (~> 5.0)
   - SwiftyJSON (~> 4.0)
@@ -66,6 +68,7 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleUtilities
     - GTMSessionFetcher
+    - IQKeyboardManagerSwift
     - nanopb
     - PromisesObjC
     - QRCodeReader.swift
@@ -81,12 +84,13 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 1024b1a4dfbd7a0e92cb20d7e0a6f1fb66b449a4
   GoogleUtilities: d866834472f1324d080496bc67ab3ce5d0d46027
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   QRCodeReader.swift: 373a389fe9a22d513c879a32a6f647c58f4ef572
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: cd32c24905209861e9b20e24c3eae067adc12302
+PODFILE CHECKSUM: 477736d44c0fe5b438625d6ab56bd845e6e2fd1d
 
 COCOAPODS: 1.10.1

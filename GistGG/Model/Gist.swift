@@ -11,16 +11,16 @@ struct Gist {
     private var id: String
     private var ownerName: String
     private var ownerImageUrl: String
-    private var coments: [GistComment]
+    private var comments: [GistComment]
     private var commits: [GistCommit]
     private var files: [GistFile]
     private var createdAt: Date
     
-    init(id: String, ownerName: String, ownerImageUrl: String, coments: [GistComment], commits: [GistCommit], files: [GistFile], createdAt: Date) {
+    init(id: String, ownerName: String, ownerImageUrl: String, comments: [GistComment], commits: [GistCommit], files: [GistFile], createdAt: Date) {
         self.id = id
         self.ownerName = ownerName
         self.ownerImageUrl = ownerImageUrl
-        self.coments = coments
+        self.comments = comments
         self.commits = commits
         self.files = files
         self.createdAt = createdAt
@@ -39,7 +39,11 @@ struct Gist {
     }
     
     func getComments() -> [GistComment] {
-        return self.coments
+        return self.comments
+    }
+    
+    mutating func addComment(newComment: GistComment) {
+        self.comments.append(newComment)
     }
     
     func getCommits() -> [GistCommit] {

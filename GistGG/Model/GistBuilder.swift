@@ -11,7 +11,7 @@ class GistBuilder {
     private var id: String
     private var ownerName: String
     private var ownerImageUrl: String?
-    private var coments: [GistComment]?
+    private var comments: [GistComment]?
     private var commits: [GistCommit]?
     private var files: [GistFile]?
     private var createdAt: Date
@@ -32,8 +32,8 @@ class GistBuilder {
         return self
     }
     
-    func andComments(_ coments: [GistComment]) -> GistBuilder{
-        self.coments = coments
+    func andComments(_ comemnts: [GistComment]) -> GistBuilder{
+        self.comments = comemnts
         return self
     }
     
@@ -48,7 +48,7 @@ class GistBuilder {
     }
     
     func thatsAll() -> Gist{
-        let gist = Gist(id: self.id, ownerName: self.ownerName, ownerImageUrl: self.ownerImageUrl ?? "", coments: self.coments ?? [], commits: self.commits ?? [], files: self.files ?? [], createdAt: self.createdAt)
+        let gist = Gist(id: self.id, ownerName: self.ownerName, ownerImageUrl: self.ownerImageUrl ?? "", comments: self.comments ?? [], commits: self.commits ?? [], files: self.files ?? [], createdAt: self.createdAt)
         
         return gist
     }

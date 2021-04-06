@@ -17,7 +17,7 @@ class SignInViewController: UIViewController, SpinnerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         gistGGLabel.font = UIFont(name: "Font Awesome 5 Brands", size: 50)
-        provider.scopes = ["gist"]
+        provider.scopes = ["gist", "read:user"]
         spinnerView.delegate = self
         
         let titleText = K.GistGG
@@ -54,8 +54,7 @@ class SignInViewController: UIViewController, SpinnerDelegate {
             } else {
                 if let credential = credential {
                     Auth.auth().signIn(with: credential) { authResult, error in
-                        self.spinnerView.willMove(toParent: nil)
-                        self.spinnerView.view.removeFromSuperview()
+                        self.spinnerView.spinnerOff()
                         if let error = error {
                             print(error)
                             self.showAlertError(errorMessage: "Couldn't login in GitHub")
@@ -63,8 +62,10 @@ class SignInViewController: UIViewController, SpinnerDelegate {
                             guard let oauthCredential = authResult?.credential as? OAuthCredential else {
                                 return
                             }
-                            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                            appDelegate.gistToken = oauthCredential.accessToken!
+                            if let acessToken = oauthCredential.accessToken, let email = authResult?.user.email {
+                                UserAuthSingleton.shared.setUserToken(with: acessToken)
+                                UserAuthSingleton.shared.setUserEmail(with: email)
+                            }
                             self.performSegue(withIdentifier: K.Segue.signInToScanSegue, sender: nil)
                         }
                     }

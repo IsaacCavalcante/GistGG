@@ -149,6 +149,7 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6R3-c3-JGK">
                                         <rect key="frame" x="0.0" y="261" width="414" height="453"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <sections/>
                                         <connections>
                                             <outlet property="dataSource" destination="dD6-jh-QJ0" id="C6g-6b-dxW"/>
                                             <outlet property="delegate" destination="dD6-jh-QJ0" id="uPG-EM-g4S"/>
@@ -171,6 +172,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="commentButtonTapped:" destination="dD6-jh-QJ0" eventType="touchUpInside" id="sjk-Mn-YOP"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -206,10 +210,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="4dp-yt-ofh"/>
                     <connections>
+                        <outlet property="commentButton" destination="jRx-dF-Tlv" id="4sJ-Tu-2uf"/>
+                        <outlet property="commentTextField" destination="Xb7-6U-tp0" id="Inj-mg-Jos"/>
                         <outlet property="commentsButton" destination="8C2-Oy-ZNO" id="h0I-ag-fKR"/>
                         <outlet property="commitsLabel" destination="8q7-Ix-A9w" id="gys-Pq-UQW"/>
+                        <outlet property="contentTableView" destination="6R3-c3-JGK" id="h35-QL-9ZQ"/>
                         <outlet property="filesButton" destination="yV7-S2-8yk" id="cc7-Hc-v9M"/>
-                        <outlet property="filesTableView" destination="6R3-c3-JGK" id="h35-QL-9ZQ"/>
                         <outlet property="ownerImageView" destination="ZP3-LP-AqJ" id="NAf-uC-OyK"/>
                         <segue destination="77w-Bb-0da" kind="show" identifier="gistToCodeViewSegue" id="vwn-rA-aOw"/>
                     </connections>

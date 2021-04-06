@@ -31,8 +31,22 @@
 		5891CD872614BC3A00CF1076 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5891CD852614BC3A00CF1076 /* Main.storyboard */; };
 		5891CD892614BC3E00CF1076 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5891CD882614BC3E00CF1076 /* Assets.xcassets */; };
 		5891CD8C2614BC3E00CF1076 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5891CD8A2614BC3E00CF1076 /* LaunchScreen.storyboard */; };
+		58C84A98261BF639009E0C9C /* UserAuthSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C84A97261BF639009E0C9C /* UserAuthSingleton.swift */; };
 		6797A9B5A3BE7A0C2E1CE880 /* Pods_GistGG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D97A19115E5868D89D903E0 /* Pods_GistGG.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		58C84AAA261C4877009E0C9C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		35145C22E425907B3D7F9AF8 /* Pods-GistGG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GistGG.release.xcconfig"; path = "Target Support Files/Pods-GistGG/Pods-GistGG.release.xcconfig"; sourceTree = "<group>"; };
@@ -63,6 +77,7 @@
 		5891CD882614BC3E00CF1076 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5891CD8B2614BC3E00CF1076 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5891CD8D2614BC3E00CF1076 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58C84A97261BF639009E0C9C /* UserAuthSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthSingleton.swift; sourceTree = "<group>"; };
 		7D97A19115E5868D89D903E0 /* Pods_GistGG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GistGG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD066A6388AB18A8CDCB05EF /* Pods-GistGG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GistGG.debug.xcconfig"; path = "Target Support Files/Pods-GistGG/Pods-GistGG.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +154,7 @@
 				5891535E2617FF28003A3EAC /* GistComment.swift */,
 				589153612617FF4D003A3EAC /* GistCommit.swift */,
 				589153642617FF5D003A3EAC /* GistFile.swift */,
+				58C84A97261BF639009E0C9C /* UserAuthSingleton.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -215,6 +231,7 @@
 				5891CD792614BC3A00CF1076 /* Frameworks */,
 				5891CD7A2614BC3A00CF1076 /* Resources */,
 				5E693D85B989B442381E1165 /* [CP] Embed Pods Frameworks */,
+				58C84AAA261C4877009E0C9C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -333,6 +350,7 @@
 				589153A626192F05003A3EAC /* CodeViewController.swift in Sources */,
 				589153622617FF4D003A3EAC /* GistCommit.swift in Sources */,
 				589153182616BEBD003A3EAC /* GistBuilder.swift in Sources */,
+				58C84A98261BF639009E0C9C /* UserAuthSingleton.swift in Sources */,
 				589153812618F60F003A3EAC /* CommentTableViewCell.swift in Sources */,
 				589152B1261507AA003A3EAC /* Gist.swift in Sources */,
 				5891CD842614BC3A00CF1076 /* ScanViewController.swift in Sources */,

@@ -11,6 +11,7 @@ target 'GistGG' do
   pod 'SwiftyJSON', '~> 4.0'
   pod 'SDWebImage', '~> 5.0'
   pod 'Firebase/Auth'
+  pod 'IQKeyboardManagerSwift'
 
 end
 
