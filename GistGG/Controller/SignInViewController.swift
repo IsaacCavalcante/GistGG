@@ -49,15 +49,21 @@ class SignInViewController: UIViewController, SpinnerDelegate {
         spinnerView.spinnerOn()
         provider.getCredentialWith(nil) { credential, error in
             if error != nil {
-                self.spinnerView.spinnerOff()
-                self.showAlertError(errorMessage: "Couldn't login in GitHub")
+                DispatchQueue.main.async {
+                    self.spinnerView.spinnerOff()
+                    self.showAlertError(errorMessage: "Couldn't login in GitHub")
+                }
             } else {
                 if let credential = credential {
                     Auth.auth().signIn(with: credential) { authResult, error in
-                        self.spinnerView.spinnerOff()
+                        DispatchQueue.main.async {
+                            self.spinnerView.spinnerOff()
+                        }
                         if let error = error {
                             print(error)
-                            self.showAlertError(errorMessage: "Couldn't login in GitHub")
+                            DispatchQueue.main.async {
+                                self.showAlertError(errorMessage: "Couldn't login in GitHub")
+                            }
                         } else {
                             guard let oauthCredential = authResult?.credential as? OAuthCredential else {
                                 return
