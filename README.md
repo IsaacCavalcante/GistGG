@@ -8,18 +8,26 @@ Open your terminal and type in
 
 ```sh
 $ git clone https://github.com/IsaacCavalcante/GistGG.git
-$ cd cd GistGG
+$ cd GistGG
 $ pod install
 ```
 
 ## How to use
 
-In order to work in device you need to change the signing team:
+After download or clone the project:
+In order to run on device you need to change the signing team:
 
 After install pods dependencies open GistGG.xcworkspace
-Select GistGG.xodeproj in Porject Navigator
+Select GistGG.xodeproj in Project Navigator
 Select GistGG target in Project and targets list
 Select Signing and Capabilities tab and change the team
+
+After finish the above checklist:
+1) After open the app will ask by sigin with your github account that allow app to use gist and get profile read-only informations
+2) Scan a QRCode like this:
+<a href="https://i.imgur.com/xWq1XyM"><img src="https://i.imgur.com/xWq1XyM.png" title="made at imgur.com"/></a>
+3) If QRCode was created from a valid URL a gist screen information will open and allow you to comment gist
+
 
 ## Bugs
 
