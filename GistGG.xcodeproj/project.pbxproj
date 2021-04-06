@@ -63,7 +63,6 @@
 		5891537A2618D59A003A3EAC /* FileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FileTableViewCell.xib; sourceTree = "<group>"; };
 		5891537F2618F60F003A3EAC /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		589153802618F60F003A3EAC /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
-		5891539926192B9C003A3EAC /* ace.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ace.bundle; sourceTree = "<group>"; };
 		589153B826197F2F003A3EAC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		589153BB261984CF003A3EAC /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		589153C6261AD63C003A3EAC /* Font Awesome 5 Brands Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Brands Regular.ttf"; sourceTree = "<group>"; };
@@ -172,14 +171,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		5891539826192B9C003A3EAC /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				5891539926192B9C003A3EAC /* ace.bundle */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		5891CD732614BC3A00CF1076 = {
 			isa = PBXGroup;
 			children = (
@@ -210,7 +201,6 @@
 				589152AC2615071C003A3EAC /* View */,
 				589152AD26150725003A3EAC /* Controller */,
 				5891532E2617BB35003A3EAC /* Networking */,
-				5891539826192B9C003A3EAC /* Resources */,
 				589152AE26150761003A3EAC /* Supporting Files */,
 			);
 			path = GistGG;
