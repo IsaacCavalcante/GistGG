@@ -16,21 +16,15 @@ class SignInViewController: UIViewController, SpinnerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        gistGGLabel.font = UIFont(name: "Font Awesome 5 Brands", size: 50)
-        provider.scopes = ["gist", "read:user"]
+        
+        //Define that spinnerView delegate is self
         spinnerView.delegate = self
         
-        let titleText = K.GistGG
-        gistGGLabel.text = ""
-        var index = 0.0
+        gistGGLabel.font = UIFont(name: "Font Awesome 5 Brands", size: 50)
+        gistGGLabel.typeAnimation(withText: K.GistGG)
         
-        for letter in titleText {
-            Timer.scheduledTimer(withTimeInterval: 0.1 * index, repeats: false, block: {_ in
-                self.gistGGLabel.text?.append(letter)
-            })
-            index+=1
-            
-        }
+        //Configuring scopes of provider. That configuration will allow
+        provider.scopes = ["gist", "read:user"]
         
         // Do any additional setup after loading the view.
     }

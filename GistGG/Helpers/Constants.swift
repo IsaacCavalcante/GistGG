@@ -36,4 +36,8 @@ struct K {
     struct Url {
         static let GIST_BASE_URL = "https://api.github.com/gists"
     }
+    
+    struct Error {
+        static let loadGist = "Error ao tentar carregar gist"
+    }
 }

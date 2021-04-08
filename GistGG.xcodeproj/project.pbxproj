@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		584FCC15261E11D40016A505 /* LabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584FCC14261E11D40016A505 /* LabelExtensions.swift */; };
+		584FCC18261E93F30016A505 /* UIViewControlerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584FCC17261E93F30016A505 /* UIViewControlerExtensions.swift */; };
 		589152B1261507AA003A3EAC /* Gist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589152B0261507AA003A3EAC /* Gist.swift */; };
 		589152B726150918003A3EAC /* GistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589152B626150918003A3EAC /* GistManager.swift */; };
 		589152BA2615098E003A3EAC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589152B92615098E003A3EAC /* Constants.swift */; };
@@ -49,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		35145C22E425907B3D7F9AF8 /* Pods-GistGG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GistGG.release.xcconfig"; path = "Target Support Files/Pods-GistGG/Pods-GistGG.release.xcconfig"; sourceTree = "<group>"; };
+		584FCC14261E11D40016A505 /* LabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExtensions.swift; sourceTree = "<group>"; };
+		584FCC17261E93F30016A505 /* UIViewControlerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControlerExtensions.swift; sourceTree = "<group>"; };
 		589152B0261507AA003A3EAC /* Gist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gist.swift; sourceTree = "<group>"; };
 		589152B626150918003A3EAC /* GistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistManager.swift; sourceTree = "<group>"; };
 		589152B92615098E003A3EAC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -108,6 +112,42 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		584FCC13261E11A50016A505 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				584FCC16261E93250016A505 /* Extensions */,
+				589152B92615098E003A3EAC /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		584FCC16261E93250016A505 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				584FCC14261E11D40016A505 /* LabelExtensions.swift */,
+				584FCC17261E93F30016A505 /* UIViewControlerExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		584FCC19261E95D20016A505 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				584FCC1A261E95ED0016A505 /* View */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		584FCC1A261E95ED0016A505 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				589153BB261984CF003A3EAC /* SignInViewController.swift */,
+				5891CD832614BC3A00CF1076 /* ScanViewController.swift */,
+				589153132616584F003A3EAC /* GistViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		589152AC2615071C003A3EAC /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,9 +161,6 @@
 		589152AD26150725003A3EAC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				589153BB261984CF003A3EAC /* SignInViewController.swift */,
-				5891CD832614BC3A00CF1076 /* ScanViewController.swift */,
-				589153132616584F003A3EAC /* GistViewController.swift */,
 				58915371261847F3003A3EAC /* SpinnerViewController.swift */,
 				589153792618D59A003A3EAC /* FileTableViewCell.swift */,
 				5891537F2618F60F003A3EAC /* CommentTableViewCell.swift */,
@@ -136,7 +173,6 @@
 			children = (
 				5891CD882614BC3E00CF1076 /* Assets.xcassets */,
 				5891CD8A2614BC3E00CF1076 /* LaunchScreen.storyboard */,
-				589152B92615098E003A3EAC /* Constants.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -192,6 +228,8 @@
 		5891CD7E2614BC3A00CF1076 /* GistGG */ = {
 			isa = PBXGroup;
 			children = (
+				584FCC19261E95D20016A505 /* Onboarding */,
+				584FCC13261E11A50016A505 /* Helpers */,
 				5891CD7F2614BC3A00CF1076 /* AppDelegate.swift */,
 				5891CD812614BC3A00CF1076 /* SceneDelegate.swift */,
 				5891CD8D2614BC3E00CF1076 /* Info.plist */,
@@ -329,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				584FCC18261E93F30016A505 /* UIViewControlerExtensions.swift in Sources */,
 				589153652617FF5D003A3EAC /* GistFile.swift in Sources */,
 				5891537B2618D59B003A3EAC /* FileTableViewCell.swift in Sources */,
 				589152B726150918003A3EAC /* GistManager.swift in Sources */,
@@ -340,6 +379,7 @@
 				589153812618F60F003A3EAC /* CommentTableViewCell.swift in Sources */,
 				589152B1261507AA003A3EAC /* Gist.swift in Sources */,
 				5891CD842614BC3A00CF1076 /* ScanViewController.swift in Sources */,
+				584FCC15261E11D40016A505 /* LabelExtensions.swift in Sources */,
 				5891535F2617FF28003A3EAC /* GistComment.swift in Sources */,
 				589152BA2615098E003A3EAC /* Constants.swift in Sources */,
 				5891CD802614BC3A00CF1076 /* AppDelegate.swift in Sources */,

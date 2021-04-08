@@ -179,7 +179,7 @@ extension GistViewController: GistManagerDelegate {
     func didFailWithError(error: Error) {
         DispatchQueue.main.async {
             self.navigationController?.popViewController(animated: true)
-            self.showAlertError(errorMessage: "Error ao tentar carregar gist")
+            self.showAlertError(errorMessage: K.Error.loadGist)
         }
         
     }
