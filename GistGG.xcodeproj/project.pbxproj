@@ -41,6 +41,7 @@
 		948961B8268F61CB005B06F8 /* ThirdPartyAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948961B7268F61CB005B06F8 /* ThirdPartyAccountModel.swift */; };
 		948961BC268F7CD6005B06F8 /* ThirdPartyRemoteAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948961BB268F7CD6005B06F8 /* ThirdPartyRemoteAuthentication.swift */; };
 		948961BF268F7D62005B06F8 /* ThirdPartyClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948961BE268F7D62005B06F8 /* ThirdPartyClient.swift */; };
+		948961C3268F8B11005B06F8 /* DataTestFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948961C2268F8B11005B06F8 /* DataTestFactories.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,7 @@
 		948961B7268F61CB005B06F8 /* ThirdPartyAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyAccountModel.swift; sourceTree = "<group>"; };
 		948961BB268F7CD6005B06F8 /* ThirdPartyRemoteAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyRemoteAuthentication.swift; sourceTree = "<group>"; };
 		948961BE268F7D62005B06F8 /* ThirdPartyClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyClient.swift; sourceTree = "<group>"; };
+		948961C2268F8B11005B06F8 /* DataTestFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTestFactories.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,6 +355,7 @@
 		948961C1268F8725005B06F8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				948961C2268F8B11005B06F8 /* DataTestFactories.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				948961C3268F8B11005B06F8 /* DataTestFactories.swift in Sources */,
 				94188976268E4FD000FE8C0A /* ThirdPartyRemoteAuthenticationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

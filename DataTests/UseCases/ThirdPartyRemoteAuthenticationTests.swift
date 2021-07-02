@@ -23,7 +23,7 @@ class DataTests: XCTestCase {
     
     func test_auth_should_complete_with_success_if_client_completes_success() {
         let (sut, clientSpy) = makeSut()
-        let expectedResult = ThirdPartyAccountModelSpy(accessToken: "any_token")
+        let expectedResult = makeThirdPartyAccountModel()
         let exp = expectation(description: "completion to auth remote account should response until 1 second")
         
         expect(sut, exp, completeWith: .success(expectedResult)) {
@@ -73,8 +73,6 @@ class ThirdPartyClientSpy: ThirdPartyClient {
     }
     
     func completesWithSucces() {
-        completion?(.success(ThirdPartyAccountModelSpy(accessToken: "any_token")))
+        completion?(.success(makeThirdPartyAccountModel()))
     }
 }
-
-class ThirdPartyAccountModelSpy: ThirdPartyAccountModel {}
