@@ -1,6 +1,6 @@
 import Foundation
 
-open class ThirdPartAccountModel: AccountModel {
+open class ThirdPartyAccountModel: AccountModel {
     var refreshToken: String?
     
     init(accessToken: String, refreshToken: String) {

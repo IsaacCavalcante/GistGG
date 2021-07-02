@@ -38,7 +38,7 @@
 		94188980268E50D400FE8C0A /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94188953268E216100FE8C0A /* Domain.framework */; };
 		94188981268E50D400FE8C0A /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 94188953268E216100FE8C0A /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		948961B4268F34E0005B06F8 /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948961B3268F34E0005B06F8 /* DomainError.swift */; };
-		948961B8268F61CB005B06F8 /* ThirdPartAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948961B7268F61CB005B06F8 /* ThirdPartAccountModel.swift */; };
+		948961B8268F61CB005B06F8 /* ThirdPartyAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948961B7268F61CB005B06F8 /* ThirdPartyAccountModel.swift */; };
 		948961BC268F7CD6005B06F8 /* ThirdPartyRemoteAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948961BB268F7CD6005B06F8 /* ThirdPartyRemoteAuthentication.swift */; };
 		948961BF268F7D62005B06F8 /* ThirdPartyClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948961BE268F7D62005B06F8 /* ThirdPartyClient.swift */; };
 /* End PBXBuildFile section */
@@ -121,7 +121,7 @@
 		94188975268E4FD000FE8C0A /* ThirdPartyRemoteAuthenticationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyRemoteAuthenticationTests.swift; sourceTree = "<group>"; };
 		94188977268E4FD100FE8C0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		948961B3268F34E0005B06F8 /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
-		948961B7268F61CB005B06F8 /* ThirdPartAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartAccountModel.swift; sourceTree = "<group>"; };
+		948961B7268F61CB005B06F8 /* ThirdPartyAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyAccountModel.swift; sourceTree = "<group>"; };
 		948961BB268F7CD6005B06F8 /* ThirdPartyRemoteAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyRemoteAuthentication.swift; sourceTree = "<group>"; };
 		948961BE268F7D62005B06F8 /* ThirdPartyClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -278,7 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				94188961268E4ED000FE8C0A /* AccountModel.swift */,
-				948961B7268F61CB005B06F8 /* ThirdPartAccountModel.swift */,
+				948961B7268F61CB005B06F8 /* ThirdPartyAccountModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -304,7 +304,8 @@
 		94188974268E4FD000FE8C0A /* DataTests */ = {
 			isa = PBXGroup;
 			children = (
-				94188975268E4FD000FE8C0A /* ThirdPartyRemoteAuthenticationTests.swift */,
+				948961C1268F8725005B06F8 /* Helpers */,
+				948961C0268F8717005B06F8 /* UseCases */,
 				94188977268E4FD100FE8C0A /* Info.plist */,
 			);
 			path = DataTests;
@@ -339,6 +340,21 @@
 				948961BE268F7D62005B06F8 /* ThirdPartyClient.swift */,
 			);
 			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		948961C0268F8717005B06F8 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				94188975268E4FD000FE8C0A /* ThirdPartyRemoteAuthenticationTests.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		948961C1268F8725005B06F8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -550,7 +566,7 @@
 			files = (
 				9418895C268E21D100FE8C0A /* Authentication.swift in Sources */,
 				948961B4268F34E0005B06F8 /* DomainError.swift in Sources */,
-				948961B8268F61CB005B06F8 /* ThirdPartAccountModel.swift in Sources */,
+				948961B8268F61CB005B06F8 /* ThirdPartyAccountModel.swift in Sources */,
 				94188962268E4ED000FE8C0A /* AccountModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

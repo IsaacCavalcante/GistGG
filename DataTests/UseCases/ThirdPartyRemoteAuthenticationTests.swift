@@ -15,37 +15,20 @@ class DataTests: XCTestCase {
         let (sut, clientSpy) = makeSut()
         
         let exp = expectation(description: "completion to auth remote account should response until 1 second")
-        let expectedResult = DomainError.unexpected
-        sut.auth() { receivedResult  in
-            switch (receivedResult) {
-            case .failure(let expectedError): XCTAssertEqual(expectedError, expectedResult)
-            case .success: XCTFail("Error expected result \(expectedResult) and received \(receivedResult)")
-                break
-            }
-            
-            exp.fulfill()
-        }
         
-        clientSpy.completesWithError(DomainError.unexpected)
-        wait(for: [exp], timeout: 1)
+        expect(sut, exp, completeWith: .failure(.unexpected)) {
+            clientSpy.completesWithError(DomainError.unexpected)
+        }
     }
     
     func test_auth_should_complete_with_success_if_client_completes_success() {
         let (sut, clientSpy) = makeSut()
-        let expectedResult = ThirdPartAccountModelSpy(accessToken: "any_token")
+        let expectedResult = ThirdPartyAccountModelSpy(accessToken: "any_token")
         let exp = expectation(description: "completion to auth remote account should response until 1 second")
-        sut.auth() { receivedResult  in
-            switch (receivedResult) {
-            case .failure: XCTFail("Error expected result \(expectedResult) and received \(receivedResult)")
-            case .success(let expectedAccount): XCTAssertEqual(expectedAccount, expectedResult)
-                
-            }
-            
-            exp.fulfill()
-        }
         
-        clientSpy.completesWithSucces()
-        wait(for: [exp], timeout: 1)
+        expect(sut, exp, completeWith: .success(expectedResult)) {
+            clientSpy.completesWithSucces()
+        }
     }
 }
 
@@ -56,8 +39,24 @@ extension DataTests {
         
         return (sut: sut, clientSpy: clientSpy)
     }
+    
+    func expect(_ sut: ThirdPartyRemoteAuthentication, _ exp: XCTestExpectation, completeWith expectedResult: Authentication.Result, when action: () -> Void,  file: StaticString = #filePath, line: UInt = #line) {
+        
+        sut.auth() { receivedResult  in
+            switch (receivedResult, expectedResult) {
+            case (.failure(let expectedError), .failure(let receivedError)): XCTAssertEqual(expectedError, receivedError, file: file, line: line)
+            case (.success(let expectedAccount), .success(let receivedAccount)): XCTAssertEqual(expectedAccount, receivedAccount, file: file, line: line)
+            default: XCTFail("Expected \(expectedResult) received \(receivedResult) insted", file: file, line: line)
+                
+            }
+            
+            exp.fulfill()
+        }
+        
+        action()
+        wait(for: [exp], timeout: 1)
+    }
 }
-
 
 //Esse seria o papel do FirebaseAdapter
 class ThirdPartyClientSpy: ThirdPartyClient {
@@ -74,8 +73,8 @@ class ThirdPartyClientSpy: ThirdPartyClient {
     }
     
     func completesWithSucces() {
-        completion?(.success(ThirdPartAccountModelSpy(accessToken: "any_token")))
+        completion?(.success(ThirdPartyAccountModelSpy(accessToken: "any_token")))
     }
 }
 
-class ThirdPartAccountModelSpy: ThirdPartAccountModel {}
+class ThirdPartyAccountModelSpy: ThirdPartyAccountModel {}
