@@ -37,6 +37,10 @@
 		94188976268E4FD000FE8C0A /* ThirdPartyRemoteAuthenticationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94188975268E4FD000FE8C0A /* ThirdPartyRemoteAuthenticationTests.swift */; };
 		94188980268E50D400FE8C0A /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94188953268E216100FE8C0A /* Domain.framework */; };
 		94188981268E50D400FE8C0A /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 94188953268E216100FE8C0A /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		948961B4268F34E0005B06F8 /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948961B3268F34E0005B06F8 /* DomainError.swift */; };
+		948961B8268F61CB005B06F8 /* ThirdPartAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948961B7268F61CB005B06F8 /* ThirdPartAccountModel.swift */; };
+		948961BC268F7CD6005B06F8 /* ThirdPartyRemoteAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948961BB268F7CD6005B06F8 /* ThirdPartyRemoteAuthentication.swift */; };
+		948961BF268F7D62005B06F8 /* ThirdPartyClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948961BE268F7D62005B06F8 /* ThirdPartyClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +120,10 @@
 		94188970268E4FD000FE8C0A /* DataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94188975268E4FD000FE8C0A /* ThirdPartyRemoteAuthenticationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyRemoteAuthenticationTests.swift; sourceTree = "<group>"; };
 		94188977268E4FD100FE8C0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		948961B3268F34E0005B06F8 /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
+		948961B7268F61CB005B06F8 /* ThirdPartAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartAccountModel.swift; sourceTree = "<group>"; };
+		948961BB268F7CD6005B06F8 /* ThirdPartyRemoteAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyRemoteAuthentication.swift; sourceTree = "<group>"; };
+		948961BE268F7D62005B06F8 /* ThirdPartyClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +266,7 @@
 		94188954268E216200FE8C0A /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				948961B2268F3477005B06F8 /* Errors */,
 				94188960268E4D4F00FE8C0A /* UseCases */,
 				9418895F268E4D1C00FE8C0A /* Models */,
 				94188956268E216200FE8C0A /* Info.plist */,
@@ -269,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				94188961268E4ED000FE8C0A /* AccountModel.swift */,
+				948961B7268F61CB005B06F8 /* ThirdPartAccountModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -284,6 +294,8 @@
 		94188969268E4FD000FE8C0A /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				948961BD268F7D25005B06F8 /* ThirdParty */,
+				948961BA268F7C99005B06F8 /* UseCases */,
 				9418896B268E4FD000FE8C0A /* Info.plist */,
 			);
 			path = Data;
@@ -303,6 +315,30 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		948961B2268F3477005B06F8 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				948961B3268F34E0005B06F8 /* DomainError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		948961BA268F7C99005B06F8 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				948961BB268F7CD6005B06F8 /* ThirdPartyRemoteAuthentication.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		948961BD268F7D25005B06F8 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				948961BE268F7D62005B06F8 /* ThirdPartyClient.swift */,
+			);
+			path = ThirdParty;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,6 +453,7 @@
 					};
 					94188967268E4FD000FE8C0A = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 					};
 					9418896F268E4FD000FE8C0A = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -512,6 +549,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9418895C268E21D100FE8C0A /* Authentication.swift in Sources */,
+				948961B4268F34E0005B06F8 /* DomainError.swift in Sources */,
+				948961B8268F61CB005B06F8 /* ThirdPartAccountModel.swift in Sources */,
 				94188962268E4ED000FE8C0A /* AccountModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -520,6 +559,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				948961BF268F7D62005B06F8 /* ThirdPartyClient.swift in Sources */,
+				948961BC268F7CD6005B06F8 /* ThirdPartyRemoteAuthentication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,6 +823,7 @@
 		9418897A268E4FD100FE8C0A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -801,6 +843,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -810,6 +853,7 @@
 		9418897B268E4FD100FE8C0A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -838,6 +882,7 @@
 		9418897D268E4FD100FE8C0A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = DataTests/Info.plist;
@@ -857,6 +902,7 @@
 		9418897E268E4FD100FE8C0A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = DataTests/Info.plist;
