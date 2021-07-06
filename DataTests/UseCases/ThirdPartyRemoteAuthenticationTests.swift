@@ -61,9 +61,9 @@ extension DataTests {
 //Esse seria o papel do FirebaseAdapter
 class ThirdPartyClientSpy: ThirdPartyClient {
     var callsCounter = 0
-    var completion: ((ThirdPartyClient.Result) -> Void)?
+    var completion: ((ThirdPartyClient.AuthResult) -> Void)?
     
-    func thirdPartyAuth(completion: @escaping (ThirdPartyClient.Result) -> Void) {
+    func thirdPartyAuth(completion: @escaping (ThirdPartyClient.AuthResult) -> Void) {
         callsCounter += 1
         self.completion = completion
     }

@@ -44,9 +44,8 @@
 		948961C3268F8B11005B06F8 /* DataTestFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948961C2268F8B11005B06F8 /* DataTestFactories.swift */; };
 		948961D2268F9459005B06F8 /* Infra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948961C9268F9458005B06F8 /* Infra.framework */; };
 		948961D7268F9459005B06F8 /* FirebaseAdapterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948961D6268F9459005B06F8 /* FirebaseAdapterTest.swift */; };
-		948961E2268F99EE005B06F8 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 948961E1268F99EE005B06F8 /* FirebaseAuth */; };
 		948961E4268F9E25005B06F8 /* FirebaseAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948961E3268F9E25005B06F8 /* FirebaseAdapter.swift */; };
-		948961E6268FAEA0005B06F8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948961E5268FAEA0005B06F8 /* Constants.swift */; };
+		94CB6E092693A8C30069FD7A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 94CB6E082693A8C30069FD7A /* FirebaseAuth */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,7 +143,6 @@
 		948961D6268F9459005B06F8 /* FirebaseAdapterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAdapterTest.swift; sourceTree = "<group>"; };
 		948961D8268F9459005B06F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		948961E3268F9E25005B06F8 /* FirebaseAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAdapter.swift; sourceTree = "<group>"; };
-		948961E5268FAEA0005B06F8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,7 +180,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				948961E2268F99EE005B06F8 /* FirebaseAuth in Frameworks */,
+				94CB6E092693A8C30069FD7A /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,7 +402,6 @@
 				589153B826197F2F003A3EAC /* GoogleService-Info.plist */,
 				948961CC268F9458005B06F8 /* Info.plist */,
 				948961E3268F9E25005B06F8 /* FirebaseAdapter.swift */,
-				948961E5268FAEA0005B06F8 /* Constants.swift */,
 			);
 			path = Infra;
 			sourceTree = "<group>";
@@ -459,6 +456,8 @@
 			dependencies = (
 			);
 			name = GistGG;
+			packageProductDependencies = (
+			);
 			productName = GistGG;
 			productReference = 5891CD7C2614BC3A00CF1076 /* GistGG.app */;
 			productType = "com.apple.product-type.application";
@@ -534,7 +533,7 @@
 			);
 			name = Infra;
 			packageProductDependencies = (
-				948961E1268F99EE005B06F8 /* FirebaseAuth */,
+				94CB6E082693A8C30069FD7A /* FirebaseAuth */,
 			);
 			productName = Infra;
 			productReference = 948961C9268F9458005B06F8 /* Infra.framework */;
@@ -600,7 +599,7 @@
 			);
 			mainGroup = 5891CD732614BC3A00CF1076;
 			packageReferences = (
-				948961E0268F99EE005B06F8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				94CB6E072693A8C30069FD7A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 5891CD7D2614BC3A00CF1076 /* Products */;
 			projectDirPath = "";
@@ -727,7 +726,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				948961E4268F9E25005B06F8 /* FirebaseAdapter.swift in Sources */,
-				948961E6268FAEA0005B06F8 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -956,6 +954,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -986,6 +985,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1015,6 +1015,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1045,6 +1046,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1067,6 +1069,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.isaac.app.DataTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -1087,6 +1090,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.isaac.app.DataTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -1114,6 +1118,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1144,6 +1149,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1166,6 +1172,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.isaac.app.InfraTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -1186,6 +1193,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.isaac.app.InfraTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -1259,7 +1267,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		948961E0268F99EE005B06F8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		94CB6E072693A8C30069FD7A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -1270,9 +1278,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		948961E1268F99EE005B06F8 /* FirebaseAuth */ = {
+		94CB6E082693A8C30069FD7A /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 948961E0268F99EE005B06F8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 94CB6E072693A8C30069FD7A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
