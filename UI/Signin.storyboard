@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QYE-mf-mah">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sign In View Controller-->
+        <scene sceneID="LZ8-5D-k0o">
+            <objects>
+                <viewController id="QYE-mf-mah" customClass="SignInViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RG7-h3-YHG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gist GG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZv-cn-VBD">
+                                <rect key="frame" x="52" y="445" width="310" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="c99-MN-gon"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dir-L7-gL6">
+                                <rect key="frame" x="0.0" y="801" width="414" height="61"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="9zI-HR-Re2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Log in">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nly-CR-7i3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nly-CR-7i3" firstAttribute="bottom" secondItem="dir-L7-gL6" secondAttribute="bottom" id="0sP-AC-glm"/>
+                            <constraint firstItem="dir-L7-gL6" firstAttribute="leading" secondItem="nly-CR-7i3" secondAttribute="leading" id="1LJ-Ui-Kxj"/>
+                            <constraint firstItem="nly-CR-7i3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mZv-cn-VBD" secondAttribute="trailing" id="8Mt-xz-Jvm"/>
+                            <constraint firstItem="mZv-cn-VBD" firstAttribute="centerX" secondItem="RG7-h3-YHG" secondAttribute="centerX" id="I1T-hQ-4IG"/>
+                            <constraint firstItem="nly-CR-7i3" firstAttribute="trailing" secondItem="dir-L7-gL6" secondAttribute="trailing" id="NID-Kd-GqB"/>
+                            <constraint firstItem="mZv-cn-VBD" firstAttribute="leading" secondItem="nly-CR-7i3" secondAttribute="leading" constant="52" id="dYv-qn-BHN"/>
+                            <constraint firstItem="mZv-cn-VBD" firstAttribute="centerY" secondItem="RG7-h3-YHG" secondAttribute="centerY" constant="27" id="zAQ-68-wbk"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="d3Q-kf-55K"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="It2-EJ-YbF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="721.73913043478262" y="53.571428571428569"/>
+        </scene>
+    </scenes>
+</document>
