@@ -11,8 +11,13 @@ public class ThirdPartyRemoteAuthentication: Authentication {
             switch result{
             case .success(let response):
                 completion(.success(response))
-            case .failure:
-                completion(.failure(.unexpected))
+            case .failure(let error):
+                switch error {
+                case .configuration, .noConnectivity:
+                    completion(.failure(.unexpected))
+                case .unauthorized:
+                    completion(.failure(.unauthorized))
+                }
             }
         }
     }

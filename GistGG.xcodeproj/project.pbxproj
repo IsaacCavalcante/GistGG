@@ -37,6 +37,10 @@
 		94188976268E4FD000FE8C0A /* ThirdPartyRemoteAuthenticationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94188975268E4FD000FE8C0A /* ThirdPartyRemoteAuthenticationTests.swift */; };
 		94188980268E50D400FE8C0A /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94188953268E216100FE8C0A /* Domain.framework */; };
 		94188981268E50D400FE8C0A /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 94188953268E216100FE8C0A /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		945F50072695E2CC003EB04A /* GithubFirebaseAuthFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945F50062695E2CC003EB04A /* GithubFirebaseAuthFactory.swift */; };
+		945F500B2695E57E003EB04A /* ThirdPartyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945F50092695E571003EB04A /* ThirdPartyError.swift */; };
+		945F500C2695E93D003EB04A /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94188968268E4FD000FE8C0A /* Data.framework */; };
+		945F500D2695E93D003EB04A /* Data.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 94188968268E4FD000FE8C0A /* Data.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		948961B4268F34E0005B06F8 /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948961B3268F34E0005B06F8 /* DomainError.swift */; };
 		948961B8268F61CB005B06F8 /* ThirdPartyAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948961B7268F61CB005B06F8 /* ThirdPartyAccountModel.swift */; };
 		948961BC268F7CD6005B06F8 /* ThirdPartyRemoteAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948961BB268F7CD6005B06F8 /* ThirdPartyRemoteAuthentication.swift */; };
@@ -62,6 +66,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 94188952268E216100FE8C0A;
 			remoteInfo = Domain;
+		};
+		945F500E2695E93D003EB04A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5891CD742614BC3A00CF1076 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 94188967268E4FD000FE8C0A;
+			remoteInfo = Data;
 		};
 		948961D3268F9459005B06F8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -90,6 +101,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				94188981268E50D400FE8C0A /* Domain.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		945F50102695E93D003EB04A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				945F500D2695E93D003EB04A /* Data.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,6 +154,8 @@
 		94188970268E4FD000FE8C0A /* DataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94188975268E4FD000FE8C0A /* ThirdPartyRemoteAuthenticationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyRemoteAuthenticationTests.swift; sourceTree = "<group>"; };
 		94188977268E4FD100FE8C0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		945F50062695E2CC003EB04A /* GithubFirebaseAuthFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubFirebaseAuthFactory.swift; sourceTree = "<group>"; };
+		945F50092695E571003EB04A /* ThirdPartyError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPartyError.swift; sourceTree = "<group>"; };
 		948961B3268F34E0005B06F8 /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
 		948961B7268F61CB005B06F8 /* ThirdPartyAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyAccountModel.swift; sourceTree = "<group>"; };
 		948961BB268F7CD6005B06F8 /* ThirdPartyRemoteAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyRemoteAuthentication.swift; sourceTree = "<group>"; };
@@ -180,6 +204,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				945F500C2695E93D003EB04A /* Data.framework in Frameworks */,
 				94CB6E092693A8C30069FD7A /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,6 +381,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		945F50052695E28F003EB04A /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				945F50062695E2CC003EB04A /* GithubFirebaseAuthFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
+		945F50082695E555003EB04A /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				945F50092695E571003EB04A /* ThirdPartyError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		945F50112695F100003EB04A /* Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				948961E3268F9E25005B06F8 /* FirebaseAdapter.swift */,
+			);
+			path = Adapters;
+			sourceTree = "<group>";
+		};
 		948961B2268F3477005B06F8 /* Errors */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,6 +424,7 @@
 		948961BD268F7D25005B06F8 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				945F50082695E555003EB04A /* Errors */,
 				948961BE268F7D62005B06F8 /* ThirdPartyClient.swift */,
 			);
 			path = ThirdParty;
@@ -399,9 +449,10 @@
 		948961CA268F9458005B06F8 /* Infra */ = {
 			isa = PBXGroup;
 			children = (
+				945F50112695F100003EB04A /* Adapters */,
+				945F50052695E28F003EB04A /* Factories */,
 				589153B826197F2F003A3EAC /* GoogleService-Info.plist */,
 				948961CC268F9458005B06F8 /* Info.plist */,
-				948961E3268F9E25005B06F8 /* FirebaseAdapter.swift */,
 			);
 			path = Infra;
 			sourceTree = "<group>";
@@ -526,10 +577,12 @@
 				948961C5268F9458005B06F8 /* Sources */,
 				948961C6268F9458005B06F8 /* Frameworks */,
 				948961C7268F9458005B06F8 /* Resources */,
+				945F50102695E93D003EB04A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				945F500F2695E93D003EB04A /* PBXTargetDependency */,
 			);
 			name = Infra;
 			packageProductDependencies = (
@@ -708,6 +761,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				948961BF268F7D62005B06F8 /* ThirdPartyClient.swift in Sources */,
+				945F500B2695E57E003EB04A /* ThirdPartyError.swift in Sources */,
 				948961BC268F7CD6005B06F8 /* ThirdPartyRemoteAuthentication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -726,6 +780,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				948961E4268F9E25005B06F8 /* FirebaseAdapter.swift in Sources */,
+				945F50072695E2CC003EB04A /* GithubFirebaseAuthFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,6 +804,11 @@
 			isa = PBXTargetDependency;
 			target = 94188952268E216100FE8C0A /* Domain */;
 			targetProxy = 94188982268E50D400FE8C0A /* PBXContainerItemProxy */;
+		};
+		945F500F2695E93D003EB04A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 94188967268E4FD000FE8C0A /* Data */;
+			targetProxy = 945F500E2695E93D003EB04A /* PBXContainerItemProxy */;
 		};
 		948961D4268F9459005B06F8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

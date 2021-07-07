@@ -17,7 +17,7 @@ class DataTests: XCTestCase {
         let exp = expectation(description: "completion to auth remote account should response until 1 second")
         
         expect(sut, exp, completeWith: .failure(.unexpected)) {
-            clientSpy.completesWithError(DomainError.unexpected)
+            clientSpy.completesWithError(.noConnectivity)
         }
     }
     
@@ -68,8 +68,8 @@ class ThirdPartyClientSpy: ThirdPartyClient {
         self.completion = completion
     }
     
-    func completesWithError(_ error: DomainError) {
-        completion?(.failure(.unexpected))
+    func completesWithError(_ error: ThirdPartyError) {
+        completion?(.failure(.noConnectivity))
     }
     
     func completesWithSucces() {
